@@ -2,6 +2,8 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { clerkMiddleware, getAuth } from "@clerk/express";
 
+import { shouldBeUser } from "./middlewares/authMiddleware.js";
+
 const app = express();
 
 app.use(clerkMiddleware());
@@ -21,15 +23,8 @@ app.get("/health", (req: Request, res: Response) => {
 	});
 });
 
-app.get("/test", (req, res) => {
-	const auth = getAuth(req);
-	const userId = auth.userId;
-
-	if (!userId) {
-		res.status(401).json({ message: "You are not logged in!" });
-	}
-
-	res.json({ message: "Product service authenticated" });
+app.get("/test", shouldBeUser, (req, res) => {
+	res.json({ message: "Product service authenticated", userId: req.userId });
 });
 
 app.listen(8000, () => {
