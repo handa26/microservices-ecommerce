@@ -3,7 +3,19 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+
     "dev": "turbo run dev",
+    "dev:full": "turbo run dev --concurrency=2",
+
+    "dev:client": "turbo run dev --filter=client",
+    "dev:admin": "turbo run dev --filter=admin",
+
+    "dev:api": "turbo run dev --filter=*-service --concurrency=2",
+
+    "dev:order": "turbo run dev --filter=order-service",
+    "dev:payment": "turbo run dev --filter=payment-service",
+    "dev:product": "turbo run dev --filter=product-service",
+
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
