@@ -5,7 +5,7 @@
     "build": "turbo run build",
 
     "dev": "turbo run dev",
-    "dev:full": "turbo run dev --concurrency=2",
+    "dev:full": "turbo run dev --concurrency=6",
 
     "dev:client": "turbo run dev --filter=client",
     "dev:admin": "turbo run dev --filter=admin",
