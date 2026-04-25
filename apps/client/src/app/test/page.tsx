@@ -28,7 +28,7 @@ const TestPage = async () => {
 	});
 	const dataPayment = await resPayment.json();
 
-	console.log(dataPayment);
+	console.log(token);
 
 	return <div className="">TestPage</div>;
 };
