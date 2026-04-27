@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 
-import { ProductType } from "@/types";
+import { ProductType } from "@repo/types";
 import useCartStore from "@/stores/cartStore";
 import { toast } from "react-toastify";
 
