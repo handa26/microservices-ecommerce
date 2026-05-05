@@ -4,6 +4,15 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+
+    "dev:client": "turbo run dev --filter=client --filter=*-service",
+    "dev:admin": "turbo run dev --filter=admin --filter=*-service",
+    "dev:backend": "turbo run dev --filter=*-service",
+
+    "dev:product-service": "turbo run dev --filter=product-service",
+    "dev:payment-service": "turbo run dev --filter=payment-service",
+    "dev:order-service": "turbo run dev --filter=order-service",
+
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
