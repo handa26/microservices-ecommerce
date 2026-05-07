@@ -1,16 +1,26 @@
 import { auth } from "@clerk/nextjs/server";
 
-const TestPage = async () => {
-	const { getToken } = await auth();
-	const token = await getToken();
-
-	const res = await fetch("http://localhost:8000/test", {
+const testServiceAuth = async (token: string, baseUrl: string) => {
+	const res = await fetch(`${baseUrl}/test`, {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},
 	});
+
 	const data = await res.json();
-	console.log(data);
+
+	return data;
+};
+
+const TestPage = async () => {
+	const { getToken } = await auth();
+	const token = await getToken();
+
+	const productService = await testServiceAuth(token as string, "http://localhost:8000");
+	console.log(productService);
+
+	const orderService = await testServiceAuth(token as string, "http://localhost:8001");
+	console.log(orderService);
 
 	return <div className="">TestPage</div>;
 };
