@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "public"."Product" (
+CREATE TABLE "Product" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "shortDescription" TEXT NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE "public"."Product" (
 );
 
 -- CreateTable
-CREATE TABLE "public"."Category" (
+CREATE TABLE "Category" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE "public"."Category" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Category_slug_key" ON "public"."Category"("slug");
+CREATE UNIQUE INDEX "Category_slug_key" ON "Category"("slug");
 
 -- AddForeignKey
-ALTER TABLE "public"."Product" ADD CONSTRAINT "Product_categorySlug_fkey" FOREIGN KEY ("categorySlug") REFERENCES "public"."Category"("slug") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Product" ADD CONSTRAINT "Product_categorySlug_fkey" FOREIGN KEY ("categorySlug") REFERENCES "Category"("slug") ON DELETE RESTRICT ON UPDATE CASCADE;
