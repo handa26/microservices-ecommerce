@@ -1,10 +1,10 @@
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { clerkMiddleware } from "@clerk/express";
 
-import { shouldBeUser } from "./middlewares/authMiddleware.js";
-import productRouter from "./routes/product.route.js";
-import categoryRouter from "./routes/category.route.js";
+import { shouldBeUser } from "./middlewares/authMiddleware";
+import productRouter from "./routes/product.route";
+import categoryRouter from "./routes/category.route";
 
 const app = express();
 
@@ -14,6 +14,7 @@ app.use(
 		credentials: true,
 	}),
 );
+app.use(express.json());
 app.use(clerkMiddleware());
 
 app.get("/health", (req: Request, res: Response) => {
@@ -30,6 +31,15 @@ app.get("/test", shouldBeUser, (req, res) => {
 
 app.use("/products", productRouter);
 app.use("/categories", categoryRouter);
+
+// Replacing any use of try/catch method
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+	console.log(err);
+
+	return res
+		.status(err.status || 500)
+		.json({ message: err.message || "Internal server error." });
+});
 
 app.listen(8000, () => {
 	console.log("Product service is running on port 8000.");
