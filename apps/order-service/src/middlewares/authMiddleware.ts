@@ -11,8 +11,22 @@ export const shouldBeUser = async (request: FastifyRequest, reply: FastifyReply)
 	const { userId } = Clerk.getAuth(request);
 
 	if (!userId) {
-		return reply.send({ message: "You are not logged in." });
+		return reply.status(401).send({ message: "You are not logged in." });
 	}
 
 	request.userId = userId;
+};
+
+export const shouldBeAdmin = async (request: FastifyRequest, reply: FastifyReply) => {
+	const auth = Clerk.getAuth(request);
+
+	if (!auth.userId) {
+		return reply.status(401).send({ message: "You are not logged in." });
+	}
+
+	if (auth.sessionClaims.metadata?.role !== "admin") {
+		return reply.status(401).send({ message: "Unauthorized access." });
+	}
+
+	request.userId = auth.userId;
 };
