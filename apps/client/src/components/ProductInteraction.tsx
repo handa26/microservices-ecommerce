@@ -61,7 +61,7 @@ const ProductInteraction = ({
 				<div className="flex items-center gap-2">
 					{product.sizes.map((size) => (
 						<div
-							className={`cursor-pointer border-1 p-[2px] ${
+							className={`cursor-pointer border p-0.5 ${
 								selectedSize === size ? "border-gray-600" : "border-gray-300"
 							}`}
 							key={size}
@@ -87,7 +87,7 @@ const ProductInteraction = ({
 				<div className="flex items-center gap-2">
 					{product.colors.map((color) => (
 						<div
-							className={`cursor-pointer border-1 p-[2px] ${
+							className={`cursor-pointer border p-0.5 ${
 								selectedColor === color ? "border-gray-300" : "border-white"
 							}`}
 							key={color}
@@ -105,7 +105,7 @@ const ProductInteraction = ({
 				<div className="flex items-center gap-2">
 					<button
 						onClick={() => handleChangeQuantity("decrement")}
-						className="cursor-pointer border-1 border-gray-300 p-1"
+						className="cursor-pointer border border-gray-300 p-1"
 						disabled={quantity === 1}
 					>
 						<Minus className="w-4 h-4" />
@@ -113,7 +113,7 @@ const ProductInteraction = ({
 					<span>{quantity}</span>
 					<button
 						onClick={() => handleChangeQuantity("increment")}
-						className="cursor-pointer border-1 border-gray-300 p-1"
+						className="cursor-pointer border border-gray-300 p-1"
 					>
 						<Plus className="w-4 h-4" />
 					</button>
