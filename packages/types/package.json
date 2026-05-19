@@ -7,7 +7,8 @@
 		"check-types": "tsx --noEmit"
 	},
 	"dependencies": {
-		"@repo/product-db": "workspace:*"
+		"@repo/product-db": "workspace:*",
+		"zod": "4.3.6"
 	},
 	"devDependencies": {
 		"@repo/typescript-config": "workspace:*",
