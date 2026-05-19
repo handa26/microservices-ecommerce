@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ArrowRight } from "lucide-react";
 
-import { ShippingFormInputs, shippingFormSchema } from "@/types";
+import { ShippingFormInputs, shippingFormSchema } from "@repo/types";
 
 const ShippingForm = ({
 	setShippingForm,

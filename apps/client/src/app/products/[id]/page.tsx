@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import ProductInteraction from "@/components/ProductInteraction";
 
-import { ProductType } from "@/types";
+import { ProductType } from "@repo/types";
 
 // TEMPORARY
 const product: ProductType = {
@@ -20,6 +20,9 @@ const product: ProductType = {
 		purple: "/products/1p.png",
 		green: "/products/1gr.png",
 	},
+	categorySlug: "test",
+	createdAt: new Date(),
+	updatedAt: new Date(),
 };
 
 export const generateMetadata = async ({
@@ -52,7 +55,9 @@ const ProductPage = async ({
 			{/* IMAGE */}
 			<div className="w-full lg:w-5/12 relative aspect-2/3">
 				<Image
-					src={product.images?.[selectedColor] || ""}
+					src={
+						(product.images as Record<string, string>)?.[selectedColor] || ""
+					}
 					alt={product.name}
 					fill
 					className="object-contain rounded-md"

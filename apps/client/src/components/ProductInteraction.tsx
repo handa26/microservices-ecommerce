@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 
-import { ProductType } from "@/types";
+import { ProductType } from "@repo/types";
 import useCartStore from "@/stores/cartStore";
 import { toast } from "react-toastify";
 
@@ -121,7 +121,10 @@ const ProductInteraction = ({
 			</div>
 
 			{/* BUTTONS */}
-			<button onClick={handleAddToCart} className="bg-gray-800 text-white px-4 py-2 rounded-md shadow-lg flex items-center justify-center gap-2 cursor-pointer text-sm font-medium">
+			<button
+				onClick={handleAddToCart}
+				className="bg-gray-800 text-white px-4 py-2 rounded-md shadow-lg flex items-center justify-center gap-2 cursor-pointer text-sm font-medium"
+			>
 				<Plus className="w-4 h-4" />
 				Add to Cart
 			</button>
