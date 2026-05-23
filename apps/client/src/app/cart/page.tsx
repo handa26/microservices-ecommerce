@@ -8,6 +8,7 @@ import Image from "next/image";
 import { CartItemsType, ShippingFormInputs } from "@repo/types";
 import ShippingForm from "@/components/ShippingForm";
 // import PaymentForm from "@/components/PaymentForm";
+import StripePaymentForm from "@/components/StripePaymentForm";
 import useCartStore from "@/stores/cartStore";
 
 const steps = [
@@ -117,8 +118,7 @@ const CartPage = () => {
 					) : activeStep === 2 ? (
 						<ShippingForm setShippingForm={setShippingForm} />
 					) : activeStep === 3 && shippingForm ? (
-						// <PaymentForm />
-						<p>Stripe Payment</p>
+						<StripePaymentForm shippingForm={shippingForm} />
 					) : (
 						<p className="text-sm text-gray-500">
 							Please fill in the shipping form to continue.

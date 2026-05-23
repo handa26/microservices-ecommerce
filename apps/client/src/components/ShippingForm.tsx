@@ -42,6 +42,7 @@ const ShippingForm = ({
 					id="name"
 					placeholder="John Doe"
 					{...register("name")}
+					value={"Ananda Muhammad"}
 				/>
 				{errors.name && (
 					<p className="text-xs text-red-500">{errors.name.message}</p>
@@ -59,6 +60,7 @@ const ShippingForm = ({
 					id="email"
 					placeholder="johndoe@email.com"
 					{...register("email")}
+					value={"anandamuhammadmtq@gmail.com"}
 				/>
 				{errors.email && (
 					<p className="text-xs text-red-500">{errors.email.message}</p>
@@ -76,6 +78,7 @@ const ShippingForm = ({
 					id="phone"
 					placeholder="(123) 456-7890"
 					{...register("phone")}
+					value={"083141591960"}
 				/>
 				{errors.phone && (
 					<p className="text-xs text-red-500">{errors.phone.message}</p>
@@ -93,6 +96,7 @@ const ShippingForm = ({
 					id="address"
 					placeholder="1234 street, city, state, country"
 					{...register("address")}
+					value={"1234 street"}
 				/>
 				{errors.address && (
 					<p className="text-xs text-red-500">{errors.address.message}</p>
@@ -110,6 +114,7 @@ const ShippingForm = ({
 					id="city"
 					placeholder="City"
 					{...register("city")}
+					value={"Jakarta"}
 				/>
 				{errors.city && (
 					<p className="text-xs text-red-500">{errors.city.message}</p>
