@@ -30,7 +30,7 @@ sessionRoute.post("/create-checkout-session", shouldBeUser, async (c) => {
 	try {
 		const session = await stripe.checkout.sessions.create({
 			line_items: lineItems,
-      client_reference_id: userId,
+			client_reference_id: userId,
 			mode: "payment",
 			ui_mode: "custom",
 			return_url:
@@ -42,6 +42,21 @@ sessionRoute.post("/create-checkout-session", shouldBeUser, async (c) => {
 		console.log(error);
 		return c.json({ error });
 	}
+});
+
+sessionRoute.get("/:session_id", async (c) => {
+	const { session_id } = c.req.param();
+	const session = await stripe.checkout.sessions.retrieve(
+		session_id as string,
+		{
+			expand: ["line_items"],
+		},
+	);
+
+	return c.json({
+		status: session.status,
+		paymentStatus: session.payment_status,
+	});
 });
 
 export default sessionRoute;
