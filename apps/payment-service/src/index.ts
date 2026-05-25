@@ -6,6 +6,7 @@ import { cors } from "hono/cors";
 import { shouldBeUser } from "./middlewares/authMiddleware.js";
 import stripe from "./utils/stripe.js";
 import sessionRoute from "./routes/session.route.js";
+import webhookRoute from "./routes/webhook.route.js";
 
 const app = new Hono();
 
@@ -13,6 +14,7 @@ app.use("*", clerkMiddleware());
 app.use("*", cors({ origin: ["http://localhost:3002"] }));
 
 app.route("/sessions", sessionRoute);
+app.route("/webhooks", webhookRoute);
 
 app.post("/create-stripe-product", async (c) => {
 	const res = await stripe.products.create({
