@@ -25,12 +25,22 @@ const product: ProductType = {
 	updatedAt: new Date(),
 };
 
+const fetchProduct = async (id: string) => {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_PRODUCT_SERVICE_URL}/products/${id}`);
+
+	const data: ProductType = await res.json();
+	return data;
+};
+
 export const generateMetadata = async ({
 	params,
 }: {
-	params: { id: string };
+	params: Promise<{ id: string }>;
 }) => {
 	// TODO: get the product from db
+	const { id } = await params;
+
+	const product = await fetchProduct(id);
 
 	return {
 		title: product.name,
@@ -46,6 +56,9 @@ const ProductPage = async ({
 	searchParams: Promise<{ color: string; size: string }>;
 }) => {
 	const { size, color } = await searchParams;
+	const { id } = await params;
+
+	const product = await fetchProduct(id);
 
 	const selectedSize = size || (product.sizes[0] as string);
 	const selectedColor = color || (product.colors[0] as string);
