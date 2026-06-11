@@ -25,6 +25,8 @@ const TestPage = async () => {
 	const paymentService = await testServiceAuth(token as string, "http://localhost:8002");
 	console.log(paymentService);
 
+	console.log(token);
+
 	return <div className="">TestPage</div>;
 };
 
