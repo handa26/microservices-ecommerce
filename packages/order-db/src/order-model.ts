@@ -6,6 +6,7 @@ export const OrderStatus = ["success", "failed"] as const;
 
 const OrderSchema = new Schema(
 	{
+		userId: { type: String, required: true },
 		email: {
 			type: String,
 			required: true,
