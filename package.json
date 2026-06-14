@@ -5,8 +5,10 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
 
-    "dev:client": "turbo run dev --filter=client --filter=*-service",
-    "dev:admin": "turbo run dev --filter=admin --filter=*-service",
+    "dev:client-full": "turbo run dev --filter=client --filter=*-service",
+    "dev:client-only": "turbo run dev --filter=client",
+    "dev:admin-full": "turbo run dev --filter=admin --filter=*-service",
+    "dev:admin-only": "turbo run dev --filter=admin",
     "dev:backend": "turbo run dev --filter=*-service",
 
     "dev:product-service": "turbo run dev --filter=product-service",
